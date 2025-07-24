@@ -84,28 +84,32 @@
         titulo: { terciario: 154368.84, universitario: 257281.40 },
         variabilidad: 107730.98,
         fijacion: { unico: 107730.98, familia: 145204.40 },
-        zona: 49816.28
+        zona: 49816.28,
+        jerarquia: "Oficial"
       },
       "ADJUTOR": {
         haber: 1093772.01,
         titulo: { terciario: 164065.80, universitario: 273443.00 },
         variabilidad: 107730.98,
         fijacion: { unico: 107730.98, familia: 145204.40 },
-        zona: 51628.66
+        zona: 51628.66,
+        jerarquia: "Oficial"
       },
       "ADJUTOR PRINCIPAL": {
         haber: 1184914.72,
         titulo: { terciario: 177737.21, universitario: 296228.68 },
         variabilidad: 107730.98,
         fijacion: { unico: 107730.98, familia: 145204.40 },
-        zona: 52541.65
+        zona: 52541.65,
+        jerarquia: "Oficial"
       },
       "SUBALCAIDE": {
         haber: 1303348.46,
         titulo: { terciario: 195502.27, universitario: 325837.11 },
         variabilidad: 107730.98,
         fijacion: { unico: 107730.98, familia: 145204.40 },
-        zona: 57976.86
+        zona: 57976.86,
+        jerarquia: "Oficial"
       }
     };
 
@@ -129,7 +133,7 @@
       const adicionalVariabilidad = variabilidad ? ref.variabilidad : 0;
       const adicionalFijacion = fijacion !== "ninguna" ? ref.fijacion[fijacion] : 0;
       const adicionalZona = zona ? ref.zona : 0;
-      const adicionalCasino = casino ? 4000 : 0;
+      const adicionalCasino = casino ? ref.jearquia === "Oficial" ? haber * 0.012: 0;
 
       const aporteLey13018 = -Aportes * 0.10;
       const aporteObra = obra === "carga"  ? -Aportes * 0.085  : obra === "mascarga"    ? -Aportes * 0.095    : -Aportes * 0.075;
@@ -146,7 +150,7 @@
         <p><strong>Adic. por variabilidad:</strong> $${adicionalVariabilidad.toFixed(2)}</p>
         <p><strong>Fijación de domicilio:</strong> $${adicionalFijacion.toFixed(2)}</p>
         <p><strong>Zona Sur:</strong> $${adicionalZona.toFixed(2)}</p>
-        <p><strong>Casino (Dto. 56/2020):</strong> $${adicionalCasino.toFixed(2)}</p>
+        <p><strong>Casino :</strong> $${adicionalCasino.toFixed(2)}</p>
         <p><strong>Aporte Ley 13.018 (10%):</strong> $${aporteLey13018.toFixed(2)}</p>
         <p><strong>Aporte Obra Social:</strong> $${aporteObra.toFixed(2)}</p>
         <hr>
