@@ -68,6 +68,7 @@
     <select id="obra">
       <option value="basica">Básica</option>
       <option value="carga">Con carga de familia (1 o 2)</option>
+      <option value="mascarga">Con carga de familia (3 o +)</option>
     </select>
 
     <button onclick="calcular()">Calcular</button>
@@ -123,13 +124,16 @@
       const haber = ref.haber;
       const suplemento = haber * 0.02 * antiguedad;
       const bonificacionTitulo = ref.titulo[titulo] || 0;
+      const Aportes =  haber + suplemento + bonificacionTitulo ;
+      
       const adicionalVariabilidad = variabilidad ? ref.variabilidad : 0;
       const adicionalFijacion = fijacion !== "ninguna" ? ref.fijacion[fijacion] : 0;
       const adicionalZona = zona ? ref.zona : 0;
       const adicionalCasino = casino ? 4000 : 0;
 
-      const aporteLey13018 = -haber * 0.10;
-      const aporteObra = obra === "carga" ? -haber * 0.085 : -haber * 0.03;
+      const aporteLey13018 = -Aportes * 0.10;
+      const aporteObra = obra === "carga"  ? -Aportes * 0.085  : obra === "mascarga"    ? -Aportes * 0.095    : -Aportes * 0.075;
+
 
       const total = haber + suplemento + bonificacionTitulo + adicionalVariabilidad +
                     adicionalFijacion + adicionalZona + adicionalCasino + aporteLey13018 + aporteObra;
