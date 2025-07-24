@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de Haberes SPF</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 30px; background: #f4f4f4; }
+    .formulario, .resultado, .titulo { background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 0 10px #ccc; max-width: 600px; }
+    label, select, input { display: block; margin-top: 10px; }
+    button { margin-top: 20px; padding: 10px 20px; border: none; border-radius: 6px; background-color: #007bff; color: white; font-weight: bold; cursor: pointer; }
+    button:hover { background-color: #0056b3; }
+    .resultado p { margin: 8px 0; }
+  </style>
+</head>
+<body>
+
+  <div class="titulo">
+    <h2>Calculadora de Haberes - SPF</h2>
+    <p>Completá los datos para estimar el haber mensual según tu situación.</p>
+  </div>
+
+  <div class="formulario">
+    <label for="grado">Grado:</label>
+    <select id="grado">
+      <option value="SUBADJUTOR">SUBADJUTOR</option>
+      <option value="ADJUTOR">ADJUTOR</option>
+      <option value="ADJUTOR PRINCIPAL">ADJUTOR PRINCIPAL</option>
+      <option value="SUBALCAIDE">SUBALCAIDE</option>
+      <!-- Agregá más si querés -->
+    </select>
+
+    <label for="antiguedad">Años de servicio:</label>
+    <input type="number" id="antiguedad" min="0" max="50" value="0">
+
+    <label for="titulo">Título:</label>
+    <select id="titulo">
+      <option value="ninguno">Ninguno</option>
+      <option value="terciario">Terciario</option>
+      <option value="universitario">Universitario</option>
+    </select>
+
+    <label for="variabilidad">¿Variabilidad?</label>
+    <select id="variabilidad">
+      <option value="no">No</option>
+      <option value="si">Sí</option>
+    </select>
+
+    <label for="fijacion">Fijación de domicilio:</label>
+    <select id="fijacion">
+      <option value="ninguna">Ninguna</option>
+      <option value="unico">Residente único</option>
+      <option value="familia">Residente con familia</option>
+    </select>
+
+    <label for="zona">¿Zona Sur?</label>
+    <select id="zona">
+      <option value="no">No</option>
+      <option value="si">Sí</option>
+    </select>
+
+    <label for="casino">¿Casino?</label>
+    <select id="casino">
+      <option value="no">No</option>
+      <option value="si">Sí</option>
+    </select>
+
+    <label for="obra">Obra social:</label>
+    <select id="obra">
+      <option value="basica">Básica</option>
+      <option value="carga">Con carga de familia (1 o 2)</option>
+    </select>
+
+    <button onclick="calcular()">Calcular</button>
+  </div>
+
+  <div class="resultado" id="resultado"></div>
+
+  <script>
+    // Tabla de referencia (editable solo por vos)
+    const referencia = {
+      "SUBADJUTOR": {
+        haber: 1029125.60,
+        titulo: { terciario: 154368.84, universitario: 257281.40 },
+        variabilidad: 107730.98,
+        fijacion: { unico: 107730.98, familia: 145204.40 },
+        zona: 49816.28
+      },
+      "ADJUTOR": {
+        haber: 1093772.01,
+        titulo: { terciario: 164065.80, universitario: 273443.00 },
+        variabilidad: 107730.98,
+        fijacion: { unico: 107730.98, familia: 145204.40 },
+        zona: 51628.66
+      },
+      "ADJUTOR PRINCIPAL": {
+        haber: 1184914.72,
+        titulo: { terciario: 177737.21, universitario: 296228.68 },
+        variabilidad: 107730.98,
+        fijacion: { unico: 107730.98, familia: 145204.40 },
+        zona: 52541.65
+      },
+      "SUBALCAIDE": {
+        haber: 1303348.46,
+        titulo: { terciario: 195502.27, universitario: 325837.11 },
+        variabilidad: 107730.98,
+        fijacion: { unico: 107730.98, familia: 145204.40 },
+        zona: 57976.86
+      }
+    };
+
+    function calcular() {
+      const grado = document.getElementById("grado").value;
+      const antiguedad = parseInt(document.getElementById("antiguedad").value);
+      const titulo = document.getElementById("titulo").value;
+      const variabilidad = document.getElementById("variabilidad").value === "si";
+      const fijacion = document.getElementById("fijacion").value;
+      const zona = document.getElementById("zona").value === "si";
+      const casino = document.getElementById("casino").value === "si";
+      const obra = document.getElementById("obra").value;
+
+      const ref = referencia[grado];
+
+      const haber = ref.haber;
+      const suplemento = haber * 0.02 * antiguedad;
+      const bonificacionTitulo = ref.titulo[titulo] || 0;
+      const adicionalVariabilidad = variabilidad ? ref.variabilidad : 0;
+      const adicionalFijacion = fijacion !== "ninguna" ? ref.fijacion[fijacion] : 0;
+      const adicionalZona = zona ? ref.zona : 0;
+      const adicionalCasino = casino ? 4000 : 0;
+
+      const aporteLey13018 = -haber * 0.10;
+      const aporteObra = obra === "carga" ? -haber * 0.085 : -haber * 0.03;
+
+      const total = haber + suplemento + bonificacionTitulo + adicionalVariabilidad +
+                    adicionalFijacion + adicionalZona + adicionalCasino + aporteLey13018 + aporteObra;
+
+      document.getElementById("resultado").innerHTML = `
+        <h3>Resultado:</h3>
+        <p><strong>Haber mensual base:</strong> $${haber.toFixed(2)}</p>
+        <p><strong>Suplemento por antigüedad (${antiguedad} años):</strong> $${suplemento.toFixed(2)}</p>
+        <p><strong>Bonificación por título:</strong> $${bonificacionTitulo.toFixed(2)}</p>
+        <p><strong>Adic. por variabilidad:</strong> $${adicionalVariabilidad.toFixed(2)}</p>
+        <p><strong>Fijación de domicilio:</strong> $${adicionalFijacion.toFixed(2)}</p>
+        <p><strong>Zona Sur:</strong> $${adicionalZona.toFixed(2)}</p>
+        <p><strong>Casino (Dto. 56/2020):</strong> $${adicionalCasino.toFixed(2)}</p>
+        <p><strong>Aporte Ley 13.018 (10%):</strong> $${aporteLey13018.toFixed(2)}</p>
+        <p><strong>Aporte Obra Social:</strong> $${aporteObra.toFixed(2)}</p>
+        <hr>
+        <p><strong>Total estimado:</strong> $${total.toFixed(2)}</p>
+      `;
+    }
+  </script>
+</body>
+</html>
