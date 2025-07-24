@@ -41,7 +41,6 @@
       <option value="SUBAYUDANTE ">SUBAYUDANTE </option>
       <option value="CADETE DE TERCER AÑO ">CADETE DE TERCER AÑO </option>
       <option value="CADETE DE SEGUNDO AÑO ">CADETE DE SEGUNDO AÑO </option>
-
     </select>
 
     <label for="antiguedad">Años de servicio:</label>
@@ -81,9 +80,8 @@
 
     <label for="obra">Obra social:</label>
     <select id="obra">
-      <option value="Solo">Solo</option>
-      <option value="Con carga de familia (1 o 2)">Con carga de familia (1 o 2)</option>
-      <option value="Con carga de familia (3 o +)">Con carga de familia (3 o +)</option>
+      <option value="basica">Básica</option>
+      <option value="carga">Con carga de familia (1 o 2)</option>
     </select>
 
     <button onclick="calcular()">Calcular</button>
@@ -158,7 +156,7 @@
         <p><strong>Adic. por variabilidad:</strong> $${adicionalVariabilidad.toFixed(2)}</p>
         <p><strong>Fijación de domicilio:</strong> $${adicionalFijacion.toFixed(2)}</p>
         <p><strong>Zona Sur:</strong> $${adicionalZona.toFixed(2)}</p>
-        <p><strong>Casino (Dto. 56/2020):</strong> $${adicionalCasino.toFixed(2)}</p>
+        <p><strong>Casino :</strong> $${adicionalCasino.toFixed(2)}</p>
         <p><strong>Aporte Ley 13.018 (10%):</strong> $${aporteLey13018.toFixed(2)}</p>
         <p><strong>Aporte Obra Social:</strong> $${aporteObra.toFixed(2)}</p>
         <hr>
