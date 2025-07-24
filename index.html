@@ -387,15 +387,15 @@
       const grado = document.getElementById("grado").value;
       const antiguedad = parseInt(document.getElementById("antiguedad").value);
       const titulo = document.getElementById("titulo").value;
-      const fijacion = document.getElementById("variabilidad").value === "si";
-      const variabilidad = document.getElementById("fijacion").value;
+      const variabilidad = document.getElementById("variabilidad").value;
+      const fijacion = document.getElementById("fijacion").value === "si";
       const zona = document.getElementById("zona").value === "si";
-      const casino = document.getElementById("casino").value === "si";
+      const usaCasino = document.getElementById("casino").value === "si";
       const obra = document.getElementById("obra").value;
      
       const ref = referencia[grado];
 
-      const casino = ref.casino;
+      const casinoMonto = ref.casino;;
       const jerarquia = ref.jerarquia;
       const haber = ref.haber;
       const suplemento = haber * 0.02 * antiguedad;
@@ -405,7 +405,7 @@
       const adicionalFijacion = fijacion ? ref.fijacion : 0;
       const adicionalVariabilidad = variabilidad !== "ninguna" ? ref.variabilidad[variabilidad] : 0;
       const adicionalZona = zona ? ref.zona : 0;
-      const adicionalCasino = casino  ? ref.casino : 0;
+      const adicionalCasino = usaCasino ? casinoMonto : 0;
       
       const aporteLey13018 = -Aportes * 0.10;
       const aporteObra = obra === "carga"  ? -Aportes * 0.085  : obra === "mascarga"    ? -Aportes * 0.095    : -Aportes * 0.075;
