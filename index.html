@@ -122,6 +122,7 @@
       const zona = document.getElementById("zona").value === "si";
       const casino = document.getElementById("casino").value === "si";
       const obra = document.getElementById("obra").value;
+      const jerarquia = ref.jerarquia;
 
       const ref = referencia[grado];
 
@@ -133,8 +134,10 @@
       const adicionalVariabilidad = variabilidad ? ref.variabilidad : 0;
       const adicionalFijacion = fijacion !== "ninguna" ? ref.fijacion[fijacion] : 0;
       const adicionalZona = zona ? ref.zona : 0;
-      const adicionalCasino = casino ? 4: 0;
+      const adicionalCasino = casino  ? (ref.jerarquia === "Oficial"  ? haber * 0.012 : (ref.jerarquia === "Suboficial" ? haber * 0.008   : 0))
+  : 0;
 
+      
       const aporteLey13018 = -Aportes * 0.10;
       const aporteObra = obra === "carga"  ? -Aportes * 0.085  : obra === "mascarga"    ? -Aportes * 0.095    : -Aportes * 0.075;
 
