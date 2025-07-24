@@ -3,13 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <title>Calculadora de Haberes SPF</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: Arial, sans-serif; padding: 30px; background: #f4f4f4; }
-    .formulario, .resultado, .titulo { background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 0 10px #ccc; max-width: 600px; }
-    label, select, input { display: block; margin-top: 10px; }
-    button { margin-top: 20px; padding: 10px 20px; border: none; border-radius: 6px; background-color: #007bff; color: white; font-weight: bold; cursor: pointer; }
-    button:hover { background-color: #0056b3; }
-    .resultado p { margin: 8px 0; }
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f4f4f4;
+      margin: 0;
+    }
+
+    .titulo, .formulario, .resultado {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px #ccc;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    label, select, input {
+      display: block;
+      margin-top: 10px;
+      width: 100%;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    input, select {
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      width: 100%;
+      border: none;
+      border-radius: 6px;
+      background-color: #007bff;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .resultado p {
+      margin: 8px 0;
+      font-size: 15px;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+
+      .titulo h2 {
+        font-size: 20px;
+      }
+
+      label {
+        font-size: 14px;
+      }
+
+      .resultado p {
+        font-size: 14px;
+      }
+
+      button {
+        font-size: 15px;
+        padding: 10px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -20,7 +91,7 @@
   </div>
 
   <div class="formulario">
-    <label for="grado">Grado:</label>
+  <label for="grado">Grado:</label>
     <select id="grado">
       
       <option value="SUBAYUDANTE">SUBAYUDANTE</option>
