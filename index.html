@@ -22,11 +22,27 @@
   <div class="formulario">
     <label for="grado">Grado:</label>
     <select id="grado">
+      
+      <option value="SUBAYUDANTE">SUBAYUDANTE</option>
+      <option value="AYUDANTE DE QUINTA">AYUDANTE DE QUINTA</option>
+      <option value="AYUDANTE DE CUARTA">AYUDANTE DE CUARTA</option>
+      <option value="AYUDANTE DE TERCERA">AYUDANTE DE TERCERA</option>
+      <option value="AYUDANTE DE SEGUNDA">AYUDANTE DE SEGUNDA</option>
+      <option value="AYUDANTE DE PRIMERA">AYUDANTE DE PRIMERA</option>
+      <option value="AYUDANTE PRINCIPAL">AYUDANTE PRINCIPAL</option>
+      <option value="AYUDANTE MAYOR">AYUDANTE MAYOR</option>
       <option value="SUBADJUTOR">SUBADJUTOR</option>
       <option value="ADJUTOR">ADJUTOR</option>
       <option value="ADJUTOR PRINCIPAL">ADJUTOR PRINCIPAL</option>
       <option value="SUBALCAIDE">SUBALCAIDE</option>
-      <!-- Agregá más si querés -->
+      <option value="ALCAIDE">ALCAIDE</option>
+      <option value="ALCAIDE MAYOR">ALCAIDE MAYOR</option>
+      <option value="SUBPREFECTO">SUBPREFECTO</option>
+      <option value="PREFECTO">PREFECTO</option>
+      <option value="INSPECTOR GENERAL">INSPECTOR GENERAL</option>
+      <option value="CADETE DE SEGUNDO AÑO">CADETE DE SEGUNDO AÑO</option>
+<option value="CADETE DE TERCER AÑO">CADETE DE TERCER AÑO</option>
+      
     </select>
 
     <label for="antiguedad">Años de servicio:</label>
@@ -41,15 +57,15 @@
 
     <label for="variabilidad">¿Variabilidad?</label>
     <select id="variabilidad">
-      <option value="no">No</option>
-      <option value="si">Sí</option>
+      <option value="ninguna">Ninguna</option>
+      <option value="unico">Residente único</option>
+      <option value="familia">Residente con familia</option>
     </select>
 
     <label for="fijacion">Fijación de domicilio:</label>
     <select id="fijacion">
-      <option value="ninguna">Ninguna</option>
-      <option value="unico">Residente único</option>
-      <option value="familia">Residente con familia</option>
+      <option value="no">No</option>
+      <option value="si">Sí</option>
     </select>
 
     <label for="zona">¿Zona Sur?</label>
@@ -79,62 +95,317 @@
   <script>
     // Tabla de referencia (editable solo por vos)
     const referencia = {
-      "SUBADJUTOR": {
-        haber: 1029125.60,
-        titulo: { terciario: 154368.84, universitario: 257281.40 },
-        variabilidad: 107730.98,
-        fijacion: { unico: 107730.98, familia: 145204.40 },
-        zona: 49816.28,
-        jerarquia: "Oficial"
-      },
-      "ADJUTOR": {
-        haber: 1093772.01,
-        titulo: { terciario: 164065.80, universitario: 273443.00 },
-        variabilidad: 107730.98,
-        fijacion: { unico: 107730.98, familia: 145204.40 },
-        zona: 51628.66,
-        jerarquia: "Oficial"
-      },
-      "ADJUTOR PRINCIPAL": {
-        haber: 1184914.72,
-        titulo: { terciario: 177737.21, universitario: 296228.68 },
-        variabilidad: 107730.98,
-        fijacion: { unico: 107730.98, familia: 145204.40 },
-        zona: 52541.65,
-        jerarquia: "Oficial"
-      },
-      "SUBALCAIDE": {
-        haber: 1303348.46,
-        titulo: { terciario: 195502.27, universitario: 325837.11 },
-        variabilidad: 107730.98,
-        fijacion: { unico: 107730.98, familia: 145204.40 },
-        zona: 57976.86,
-        jerarquia: "Oficial"
-      }
-    };
+  "INSPECTOR GENERAL": {
+    jerarquia: "Oficial",
+    haber: 2916371.18,
+    titulo: {
+      terciario: 437455.68,
+      universitario: 729092.79
+    },
+    variabilidad: {
+      unico: 107730.98,
+      familia: 145204.4
+    },
+    fijacion: 187326.3,
+    zona: 0,
+    casino: 12349.51
+  },
+  "PREFECTO": {
+    jerarquia: "Oficial",
+    haber: 2668514.4,
+    titulo: {
+      terciario: 400277.16,
+      universitario: 667128.6
+    },
+    variabilidad: {
+      unico: 107730.98,
+      familia: 145204.4
+    },
+    fijacion: 187326.3,
+    zona: 112336.73,
+    casino: 12349.51
+  },
+  "SUBPREFECTO": {
+    jerarquia: "Oficial",
+    haber: 2340718.29,
+    titulo: {
+      terciario: 351107.74,
+      universitario: 585179.57
+    },
+    variabilidad: {
+      unico: 107730.98,
+      familia: 145204.4
+    },
+    fijacion: 187326.3,
+    zona: 99651.98,
+    casino: 12349.51
+  },
+  "ALCAIDE MAYOR": {
+    jerarquia: "Oficial",
+    haber: 1956122.05,
+    titulo: {
+      terciario: 293418.31,
+      universitario: 489030.51
+    },
+    variabilidad: {
+      unico: 107730.98,
+      familia: 145204.4
+    },
+    fijacion: 140503.47,
+    zona: 79727.41,
+    casino: 12349.51
+  },
+  "ALCAIDE": {
+    jerarquia: "Oficial",
+    haber: 1551445.03,
+    titulo: {
+      terciario: 232716.75,
+      universitario: 387861.26
+    },
+    variabilidad: {
+      unico: 107730.98,
+      familia: 145204.4
+    },
+    fijacion: 140503.47,
+    zona: 68856.99,
+    casino: 12349.51
+  },
+  "SUBALCAIDE": {
+    jerarquia: "Oficial",
+    haber: 1303348.46,
+    titulo: {
+      terciario: 195502.27,
+      universitario: 325837.11
+    },
+    variabilidad: {
+      unico: 107730.98,
+      familia: 145204.4
+    },
+    fijacion: 93667.03,
+    zona: 57976.86,
+    casino: 12349.51
+  },
+  "ADJUTOR PRINCIPAL": {
+    jerarquia: "Oficial",
+    haber: 1184914.72,
+    titulo: {
+      terciario: 177737.21,
+      universitario: 296228.68
+    },
+    variabilidad: {
+      unico: 107730.98,
+      familia: 145204.4
+    },
+    fijacion: 0,
+    zona: 52541.65,
+    casino: 12349.51
+  },
+  "ADJUTOR": {
+    jerarquia: "Oficial",
+    haber: 1093772.01,
+    titulo: {
+      terciario: 164065.8,
+      universitario: 273443
+    },
+    variabilidad: {
+      unico: 107730.98,
+      familia: 145204.4
+    },
+    fijacion: 0,
+    zona: 51628.66,
+    casino: 12349.51
+  },
+  "SUBADJUTOR": {
+    jerarquia: "Oficial",
+    haber: 1029125.6,
+    titulo: {
+      terciario: 154368.84,
+      universitario: 257281.4
+    },
+    variabilidad: {
+      unico: 107730.98,
+      familia: 145204.4
+    },
+    fijacion: 0,
+    zona: 49816.28,
+    casino: 12349.51
+  },
+  "AYUDANTE MAYOR": {
+    jerarquia: "Suboficial",
+    haber: 1844843.24,
+    titulo: {
+      terciario: 276726.49,
+      universitario: 461210.81
+    },
+    variabilidad: {
+      unico: 107730.98,
+      familia: 145204.4
+    },
+    fijacion: 0,
+    zona: 67032.95,
+    casino: 6977.96
+  },
+  "AYUDANTE PRINCIPAL": {
+    jerarquia: "Suboficial",
+    haber: 1683888.55,
+    titulo: {
+      terciario: 252583.28,
+      universitario: 420972.14
+    },
+    variabilidad: {
+      unico: 107730.98,
+      familia: 145204.4
+    },
+    fijacion: 0,
+    zona: 59783.42,
+    casino: 6977.96
+  },
+  "AYUDANTE DE PRIMERA": {
+    jerarquia: "Suboficial",
+    haber: 1553106.4,
+    titulo: {
+      terciario: 232965.96,
+      universitario: 388276.6
+    },
+    variabilidad: {
+      unico: 107730.98,
+      familia: 145204.4
+    },
+    fijacion: 0,
+    zona: 54355.98,
+    casino: 6977.96
+  },
+  "AYUDANTE DE SEGUNDA": {
+    jerarquia: "Suboficial",
+    haber: 1162805.05,
+    titulo: {
+      terciario: 174420.76,
+      universitario: 290701.26
+    },
+    variabilidad: {
+      unico: 107730.98,
+      familia: 145204.4
+    },
+    fijacion: 0,
+    zona: 53439.1,
+    casino: 6977.96
+  },
+  "AYUDANTE DE TERCERA": {
+    jerarquia: "Suboficial",
+    haber: 1033775.46,
+    titulo: {
+      terciario: 155066.32,
+      universitario: 258443.87
+    },
+    variabilidad: {
+      unico: 107730.98,
+      familia: 145204.4
+    },
+    fijacion: 0,
+    zona: 52541.65,
+    casino: 6977.96
+  },
+  "AYUDANTE DE CUARTA": {
+    jerarquia: "Suboficial",
+    haber: 969411.68,
+    titulo: {
+      terciario: 145411.75,
+      universitario: 242352.92
+    },
+    variabilidad: {
+      unico: 107730.98,
+      familia: 145204.4
+    },
+    fijacion: 0,
+    zona: 50738.98,
+    casino: 6977.96
+  },
+  "AYUDANTE DE QUINTA": {
+    jerarquia: "Suboficial",
+    haber: 923714.48,
+    titulo: {
+      terciario: 138557.17,
+      universitario: 230928.62
+    },
+    variabilidad: {
+      unico: 107730.98,
+      familia: 145204.4
+    },
+    fijacion: 0,
+    zona: 48909.11,
+    casino: 6977.96
+  },
+  "SUBAYUDANTE": {
+    jerarquia: "Suboficial",
+    haber: 872244.86,
+    titulo: {
+      terciario: 130836.73,
+      universitario: 218061.21
+    },
+    variabilidad: {
+      unico: 107730.98,
+      familia: 145204.4
+    },
+    fijacion: 0,
+    zona: 48005.84,
+    casino: 6977.96
+  },
+  "CADETE DE TERCER AÑO": {
+    jerarquia: "Aspirante",
+    haber: 607578.58,
+    titulo: {
+      terciario: 0,
+      universitario: 0
+    },
+    variabilidad: {
+      unico: 107730.98,
+      familia: 145204.4
+    },
+    fijacion: 0,
+    zona: 0,
+    casino: 1745.70
+  },
+  "CADETE DE SEGUNDO AÑO": {
+    jerarquia: "Aspirante",
+    haber: 581900.76,
+    titulo: {
+      terciario: 0,
+      universitario: 0
+    },
+    variabilidad: {
+      unico: 107730.98,
+      familia: 145204.4
+    },
+    fijacion: 0,
+    zona: 0,
+    casino: 1822.74
+  }
+}
+;
 
     function calcular() {
       const grado = document.getElementById("grado").value;
       const antiguedad = parseInt(document.getElementById("antiguedad").value);
       const titulo = document.getElementById("titulo").value;
-      const variabilidad = document.getElementById("variabilidad").value === "si";
-      const fijacion = document.getElementById("fijacion").value;
+      const fijacion = document.getElementById("variabilidad").value === "si";
+      const variabilidad = document.getElementById("fijacion").value;
       const zona = document.getElementById("zona").value === "si";
       const casino = document.getElementById("casino").value === "si";
       const obra = document.getElementById("obra").value;
      
       const ref = referencia[grado];
-      
+
+      const casino = ref.casino;
       const jerarquia = ref.jerarquia;
       const haber = ref.haber;
       const suplemento = haber * 0.02 * antiguedad;
       const bonificacionTitulo = ref.titulo[titulo] || 0;
       const Aportes =  haber + suplemento + bonificacionTitulo ;
       
-      const adicionalVariabilidad = variabilidad ? ref.variabilidad : 0;
-      const adicionalFijacion = fijacion !== "ninguna" ? ref.fijacion[fijacion] : 0;
+      const adicionalFijacion = fijacion ? ref.fijacion : 0;
+      const adicionalVariabilidad = variabilidad !== "ninguna" ? ref.variabilidad[variabilidad] : 0;
       const adicionalZona = zona ? ref.zona : 0;
-      const adicionalCasino = casino  ? (ref.jerarquia === "Oficial"  ? -haber * 0.012 : (ref.jerarquia === "Suboficial" ? -haber * 0.008   : 0)) : 0;
+      const adicionalCasino = casino  ? ref.casino : 0;
       
       const aporteLey13018 = -Aportes * 0.10;
       const aporteObra = obra === "carga"  ? -Aportes * 0.085  : obra === "mascarga"    ? -Aportes * 0.095    : -Aportes * 0.075;
