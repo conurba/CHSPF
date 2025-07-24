@@ -122,10 +122,10 @@
       const zona = document.getElementById("zona").value === "si";
       const casino = document.getElementById("casino").value === "si";
       const obra = document.getElementById("obra").value;
-      const jerarquia = ref.jerarquia;
-
+     
       const ref = referencia[grado];
-
+      
+      const jerarquia = ref.jerarquia;
       const haber = ref.haber;
       const suplemento = haber * 0.02 * antiguedad;
       const bonificacionTitulo = ref.titulo[titulo] || 0;
