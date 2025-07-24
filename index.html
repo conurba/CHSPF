@@ -92,7 +92,7 @@
 
   <div class="formulario">
   <label for="grado">Grado:</label>
-    <select id="grado">
+    <select id="grado" name="grado" onchange="verificarFijacion()">
       
       <option value="SUBAYUDANTE">SUBAYUDANTE</option>
       <option value="AYUDANTE DE QUINTA">AYUDANTE DE QUINTA</option>
@@ -132,12 +132,13 @@
       <option value="unico">Residente único</option>
       <option value="familia">Residente con familia</option>
     </select>
-
-    <label for="fijacion">Fijación de domicilio:</label>
-    <select id="fijacion">
-      <option value="no">No</option>
-      <option value="si">Sí</option>
-    </select>
+   <div id="fijacionCampo" style="display: none;">
+   <label for="fijacion">Fijación de domicilio:</label>
+   <select id="fijacion">
+    <option value="no">No</option>
+    <option value="si">Sí</option>
+  </select>
+</div>
 
     <label for="zona">¿Zona Sur?</label>
     <select id="zona">
@@ -502,5 +503,26 @@
       `;
     }
   </script>
+  <script>
+  function verificarFijacion() {
+    const gradosConFijacion = [
+      "INSPECTOR GENERAL",
+      "PREFECTO",
+      "SUBPREFECTO",
+      "ALCAIDE MAYOR",
+      "ALCAIDE",
+      "SUBALCAIDE"
+    ];
+    
+    const gradoSeleccionado = document.getElementById("grado").value;
+    const campoFijacion = document.getElementById("fijacion");
+
+    if (gradosConFijacion.includes(gradoSeleccionado)) {
+      campoFijacion.style.display = "block";
+    } else {
+      campoFijacion.style.display = "none";
+    }
+  }
+</script>
 </body>
 </html>
