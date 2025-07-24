@@ -405,14 +405,14 @@
       const adicionalFijacion = fijacion ? ref.fijacion : 0;
       const adicionalVariabilidad = variabilidad !== "ninguna" ? ref.variabilidad[variabilidad] : 0;
       const adicionalZona = zona ? ref.zona : 0;
-      const adicionalCasino = usaCasino ? casinoMonto : 0;
+      const adicionalCasino = usaCasino ? -casinoMonto : 0;
       
       const aporteLey13018 = -Aportes * 0.10;
       const aporteObra = obra === "carga"  ? -Aportes * 0.085  : obra === "mascarga"    ? -Aportes * 0.095    : -Aportes * 0.075;
 
 
       const total = haber + suplemento + bonificacionTitulo + adicionalVariabilidad +
-                    adicionalFijacion + adicionalZona - adicionalCasino + aporteLey13018 + aporteObra;
+                    adicionalFijacion + adicionalZona + adicionalCasino + aporteLey13018 + aporteObra;
 
       document.getElementById("resultado").innerHTML = `
         <h3>Resultado:</h3>
@@ -422,6 +422,7 @@
         <p><strong>Adic. por variabilidad:</strong> $${adicionalVariabilidad.toFixed(2)}</p>
         <p><strong>Fijación de domicilio:</strong> $${adicionalFijacion.toFixed(2)}</p>
         <p><strong>Zona Sur:</strong> $${adicionalZona.toFixed(2)}</p>
+        <hr>
         <p><strong>Casino :</strong> $${adicionalCasino.toFixed(2)}</p>
         <p><strong>Aporte Ley 13.018 (10%):</strong> $${aporteLey13018.toFixed(2)}</p>
         <p><strong>Aporte Obra Social:</strong> $${aporteObra.toFixed(2)}</p>
