@@ -165,10 +165,13 @@
     </select>
 
     <button onclick="calcular()">Calcular</button>
+<button onclick="mostrarTabla()">Ver tabla de haberes</button>
   </div>
 
   <div class="resultado" id="resultado"></div>
 
+<div class="resultado" id="tablaReferencias" style="display: none;"></div>
+  
   <script>
     // Tabla de referencia (editable solo por vos)
     const referencia = {
@@ -530,5 +533,44 @@
   }
 </script>
 
+<script>
+function mostrarTabla() {
+  // Convertir el objeto a un array y ordenarlo
+  const lista = Object.entries(referencia).sort((a, b) => b[1].haber - a[1].haber);
+
+  let tablaHTML = `
+    <h3>Tabla de haberes (ordenados de mayor a menor)</h3>
+    <table style="width:100%; border-collapse: collapse; font-size:14px;">
+      <thead>
+        <tr style="background:#007bff; color:white;">
+          <th style="padding: 8px; border: 1px solid #ccc;">Grado</th>
+          <th style="padding: 8px; border: 1px solid #ccc;">Jerarquía</th>
+          <th style="padding: 8px; border: 1px solid #ccc;">Haber Mensual</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  lista.forEach(([grado, datos]) => {
+    tablaHTML += `
+      <tr>
+        <td style="padding: 8px; border: 1px solid #ccc;">${grado}</td>
+        <td style="padding: 8px; border: 1px solid #ccc;">${datos.jerarquia}</td>
+        <td style="padding: 8px; border: 1px solid #ccc;">$${datos.haber.toLocaleString("es-AR", {minimumFractionDigits: 2})}</td>
+      </tr>
+    `;
+  });
+
+  tablaHTML += `
+      </tbody>
+    </table>
+  `;
+
+  const tablaDiv = document.getElementById("tablaReferencias");
+  tablaDiv.innerHTML = tablaHTML;
+  tablaDiv.style.display = "block";
+}
+</script>
+  
 </body>
 </html>
