@@ -120,12 +120,15 @@
     <label for="antiguedad">Años de servicio:</label>
     <input type="number" id="antiguedad" min="0" max="50" value="0">
 
-   <div class="opciones">
-    <p>Título:</p>
-    <label><input type="radio" name="titulo" value="terciario" /> Terciario</label>
-    <label><input type="radio" name="titulo" value="universitario" /> Universitario</label>
-    <label><input type="radio" name="titulo" value="no" checked /> Ninguno</label>
+ <div class="form-group">
+  <label for="titulo">Título:</label>
+  <div class="opciones-horizontal" id="grupo-titulo">
+    <button type="button" class="opcion-btn" data-valor="ninguno">Ninguno</button>
+    <button type="button" class="opcion-btn" data-valor="terciario">Terciario</button>
+    <button type="button" class="opcion-btn" data-valor="universitario">Universitario</button>
   </div>
+  <input type="hidden" id="titulo" value="ninguno">
+</div>
 
   <div class="opciones">
     <p>Variabilidad:</p>
