@@ -548,7 +548,6 @@ function mostrarTabla() {
       <thead>
         <tr style="background:#007bff; color:white;">
           <th style="padding: 8px; border: 1px solid #ccc;">Grado</th>
-          <th style="padding: 8px; border: 1px solid #ccc;">Jerarquía</th>
           <th style="padding: 8px; border: 1px solid #ccc;">Haber Mensual</th>
         </tr>
       </thead>
@@ -560,6 +559,7 @@ function mostrarTabla() {
       <tr>
         <td style="padding: 8px; border: 1px solid #ccc;">${grado}</td>
         <td style="padding: 8px; border: 1px solid #ccc;">$${datos.haber.toLocaleString("es-AR", {minimumFractionDigits: 2})}</td>
+        
       </tr>
     `;
   });
