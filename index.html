@@ -113,51 +113,52 @@
       <option value="PREFECTO">PREFECTO</option>
       <option value="INSPECTOR GENERAL">INSPECTOR GENERAL</option>
       <option value="CADETE DE SEGUNDO AÑO">CADETE DE SEGUNDO AÑO</option>
-<option value="CADETE DE TERCER AÑO">CADETE DE TERCER AÑO</option>
+      <option value="CADETE DE TERCER AÑO">CADETE DE TERCER AÑO</option>
       
     </select>
 
     <label for="antiguedad">Años de servicio:</label>
     <input type="number" id="antiguedad" min="0" max="50" value="0">
 
-  <div class="opciones">
-    <p>Título:</p>
-    <label><input type="button" name="titulo" value="terciario" /> Terciario</label>
-    <label><input type="button" name="titulo" value="universitario" /> Universitario</label>
-    <label><input type="button" name="titulo" value="no" checked /> Ninguno</label>
-  </div>
+<label for="titulo">Título:</label>
+    <select id="titulo">
+      <option value="ninguno">Ninguno</option>
+      <option value="terciario">Terciario</option>
+      <option value="universitario">Universitario</option>
+    </select>
 
-  <div class="opciones">
-    <p>Variabilidad:</p>
-    <label><input type="radio" name="variabilidad" value="familia" /> Residente con familia</label>
-    <label><input type="radio" name="variabilidad" value="unico" /> Residente único</label>
-    <label><input type="radio" name="variabilidad" value="ninguna" checked /> Ninguna</label>
-  </div>
+    <label for="variabilidad">¿Variabilidad?</label>
+    <select id="variabilidad">
+      <option value="ninguna">Ninguna</option>
+      <option value="unico">Residente único</option>
+      <option value="familia">Residente con familia</option>
+    </select>
+   <div id="fijacionCampo" style="display: none;">
+   <label for="fijacion">Fijación de domicilio:</label>
+   <select id="fijacion">
+    <option value="no">No</option>
+    <option value="si">Sí</option>
+  </select>
+</div>
 
-  <div class="opciones" id="fijacionContainer" style="display:none;">
-    <p>Fijación de domicilio:</p>
-    <label><input type="radio" name="fijacion" value="si" /> Sí</label>
-    <label><input type="radio" name="fijacion" value="no" checked /> No</label>
-  </div>
+    <label for="zona">¿Zona Sur?</label>
+    <select id="zona">
+      <option value="no">No</option>
+      <option value="si">Sí</option>
+    </select>
 
-  <div class="opciones">
-    <p>Zona sur:</p>
-    <label><input type="radio" name="zona" value="si" /> Sí</label>
-    <label><input type="radio" name="zona" value="no" checked /> No</label>
-  </div>
+    <label for="casino">¿Casino?</label>
+    <select id="casino">
+      <option value="si">Sí</option>
+      <option value="no">No</option>
+    </select>
 
-  <div class="opciones">
-    <p>Casino:</p>
-    <label><input type="radio" name="casino" value="no"  /> No</label>
-    <label><input type="radio" name="casino" value="si" checked /> Sí</label>
-  </div>
-
-  <div class="opciones">
-    <p>Obra social:</p>
-    <label><input type="radio" name="obra" value="carga"  /> Con carga de familia (1 o 2)</label>
-    <label><input type="radio" name="obra" value="mascarga" /> Con carga de familia (3 o +)</label>
-    <label><input type="radio" name="obra" value="basica" checked /> Básica</label>
-  </div>
+    <label for="obra">Obra social:</label>
+    <select id="obra">
+      <option value="basica">Básica</option>
+      <option value="carga">Con carga de familia (1 o 2)</option>
+      <option value="mascarga">Con carga de familia (3 o +)</option>
+    </select>
 
     <button onclick="calcular()">Calcular</button>
 <button onclick="mostrarTabla()">Ver tabla de haberes</button>
