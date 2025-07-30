@@ -12,7 +12,7 @@
       margin: 0;
     }
 
-    .titulo, .formulario, .resultado {
+    .titulo,.nota, .formulario, .resultado {
       background: white;
       padding: 20px;
       border-radius: 10px;
@@ -90,13 +90,7 @@
     <p>Completá los datos para estimar el haber mensual según tu situación.</p>
    
   </div>
-<h2>Nota</h2>
-      <p>El resultado es estimativo, no contempla los rubros: 
-      </p>-SUMA FIJA DCTO. 56/2020</p>
-      </p>-SUB. POR FALLECIMIENTO</p>
-      </p>-SEGURO OBLIGATORIO (C.N.A.S.)</p>
-      </p>-ASIST. VARIAS (D.O.S.)</p>
-  </div>  
+ 
   <div class="formulario">
   <label for="grado">Grado:</label>
     <select id="grado" name="grado" onchange="verificarFijacion()">
@@ -175,7 +169,13 @@
 <div class="resultado" id="tablaReferencias" style="display: none;"></div>
 
  <div class="nota">
-    
+    <h2>Nota</h2>
+      <p>El resultado es estimativo, no contempla los rubros: 
+      </p>-SUMA FIJA DCTO. 56/2020</p>
+      </p>-SUB. POR FALLECIMIENTO</p>
+      </p>-SEGURO OBLIGATORIO (C.N.A.S.)</p>
+      </p>-ASIST. VARIAS (D.O.S.)</p>
+  </div> 
   <script>
     // Tabla de referencia (editable solo por vos)
     const referencia = {
