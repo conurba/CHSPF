@@ -162,7 +162,7 @@
     </select>
 
     <button onclick="calcular()">Calcular</button>
-<button onclick="mostrarTabla()">Ver tabla de haberes</button>
+<button onclick="mostrarTabla()">Ver tabla de haberes estimados</button>
   </div>
 
   <div class="resultado" id="resultado"></div>
@@ -621,8 +621,7 @@ function mostrarTabla() {
 
   let tablaHTML = `
     <h3>Haberes estimados (ordenados de mayor a menor)</h3>
-        <p>Haber neto = "Haber mensual" + "Suplemento por antigüedad" (años mínimos acumulados para ascender) - "Casino" - "Aporte jubilatorio" - "Aporte obra social con carga de familia (1 o 2)"</p>
-        <p>Haber neto universitario = "Haber neto" + "Bonificación por titulo universitario"</p>
+        
     <table style="width:100%; border-collapse: collapse; font-size:14px;">
       <thead>
         <tr style="background:#007bff; color:white;">
@@ -667,6 +666,19 @@ function mostrarTabla() {
   tablaHTML += `
       </tbody>
     </table>
+ 
+    <div style="margin-top: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 5px;">
+      <h4>Formulas:</h4>
+      <ul>
+        <li><strong>Haber neto</strong> = "Haber mensual" + "Suplemento por antigüedad" (años mínimos acumulados para ascender) - "Casino" - "Aporte jubilatorio" - "Aporte obra social con carga de familia (1 o 2)"</li
+        <li><strong>Haber neto universitario</strong> = "Haber neto" + "Bonificación por titulo universitario"</li>
+
+      </ul>
+      <p style="font-style: italic; margin-top: 10px;">Última actualización: [fecha de actualización]</p>
+    </div>
+
+
+    
   `;
 
   const tablaDiv = document.getElementById("tablaReferencias");
