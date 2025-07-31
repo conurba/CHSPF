@@ -12,7 +12,7 @@
       margin: 0;
     }
 
-    .titulo,.nota, .formulario, .resultado {
+    .titulo, .formulario, .resultado {
       background: white;
       padding: 20px;
       border-radius: 10px;
@@ -169,15 +169,7 @@
   <div class="resultado" id="resultado"></div>
 
 <div class="resultado" id="tablaReferencias" style="display: none;"></div>
-
- <div class="nota">
-    <h2>Nota</h2>
-      <p>El resultado es estimativo, no contempla los rubros:</p> 
-      <p>-SUMA FIJA DCTO. 56/2020</p>
-      <p>-SUB. POR FALLECIMIENTO</p>
-      <p>-SEGURO OBLIGATORIO (C.N.A.S.)</p>
-      <p>-ASIST. VARIAS (D.O.S.)</p>
-  </div> 
+ 
   <script>
     // Tabla de referencia (editable solo por vos)
     const referencia = {
@@ -646,6 +638,19 @@
         </tr>
       </tbody>
     </table>
+
+<div style="margin-top: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 5px;">
+      <h4>Aclaracion:</h4>
+      <p>El resultado es estimativo, no contempla los rubros:</p>
+      <ul>
+        <li>SUMA FIJA DCTO. 56/2020</li>
+        <li>SUB. POR FALLECIMIENTO</li>
+        <li>SEGURO OBLIGATORIO (C.N.A.S.)</li>
+        <li>ASIST. VARIAS (D.O.S.)</li>
+        <li>Otros...</li>
+      </ul>
+    </div>
+    
   `;
 }
   </script>
