@@ -621,7 +621,8 @@ function mostrarTabla() {
 
   let tablaHTML = `
     <h3>Haberes estimados (ordenados de mayor a menor)</h3>
-    
+        <p>Haber neto = "Haber mensual" + "Suplemento por antigüedad" (años mínimos acumulados para ascender) - "Casino" - "Aporte jubilatorio" - "Aporte obra social con carga de familia (1 o 2)"</p>
+        <p>Haber neto universitario = "Haber neto" + "Bonificación por titulo universitario"</p>
     <table style="width:100%; border-collapse: collapse; font-size:14px;">
       <thead>
         <tr style="background:#007bff; color:white;">
@@ -631,17 +632,8 @@ function mostrarTabla() {
 
         </tr>
       </thead>
+
       
-      <p>El haber neto estimado se calcula:</p> 
-      <p> Haber mensual base: correspondiente al grado </p>
-      <p> Suplemento por antigüedad: acumulacion segun antiguedad minima ascender</p>
-      <p> Bonificacion por titulo: No</p>
-      <p> Adic. por variabilidad: No</p>
-      <p> Fijación de domicilio: Si</p>
-      <p> Zona Sur: No</p>
-      <p> Casino : Si</p>
-      <p> Aporte Ley 13.018: -10% </p>
-      <p> Aporte Obra Social con carga de familia (1 o 2): -8.5% </p>
       <tbody>
   `;
 
