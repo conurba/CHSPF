@@ -564,53 +564,90 @@
 }
 ;
 
-    function calcular() {
-      const grado = document.getElementById("grado").value;
-      const antiguedad = parseInt(document.getElementById("antiguedad").value);
-      const titulo = document.getElementById("titulo").value;
-      const variabilidad = document.getElementById("variabilidad").value;
-      const fijacion = document.getElementById("fijacion").value === "si";
-      const zona = document.getElementById("zona").value === "si";
-      const usaCasino = document.getElementById("casino").value === "si";
-      const obra = document.getElementById("obra").value;
-     
-      const ref = referencia[grado];
+   function calcular() {
+  const grado = document.getElementById("grado").value;
+  const antiguedad = parseInt(document.getElementById("antiguedad").value);
+  const titulo = document.getElementById("titulo").value;
+  const variabilidad = document.getElementById("variabilidad").value;
+  const fijacion = document.getElementById("fijacion").value === "si";
+  const zona = document.getElementById("zona").value === "si";
+  const usaCasino = document.getElementById("casino").value === "si";
+  const obra = document.getElementById("obra").value;
+  
+  const ref = referencia[grado];
 
-      const casinoMonto = ref.casino;
-      const jerarquia = ref.jerarquia;
-      const haber = ref.haber;
-      const suplemento = haber * 0.02 * antiguedad;
-      const bonificacionTitulo = ref.titulo[titulo] || 0;
-      const Aportes =  haber + suplemento + bonificacionTitulo ;
-      
-      const adicionalFijacion = fijacion ? ref.fijacion : 0;
-      const adicionalVariabilidad = variabilidad !== "ninguna" ? ref.variabilidad[variabilidad] : 0;
-      const adicionalZona = zona ? ref.zona : 0;
-      const adicionalCasino = usaCasino ? -casinoMonto : 0;
-      
-      const aporteLey13018 = -Aportes * 0.10;
-      const aporteObra = obra === "carga"  ? -Aportes * 0.085  : obra === "mascarga"    ? -Aportes * 0.095    : -Aportes * 0.075;
+  const casinoMonto = ref.casino;
+  const jerarquia = ref.jerarquia;
+  const haber = ref.haber;
+  const suplemento = haber * 0.02 * antiguedad;
+  const bonificacionTitulo = ref.titulo[titulo] || 0;
+  const Aportes = haber + suplemento + bonificacionTitulo;
+  
+  const adicionalFijacion = fijacion ? ref.fijacion : 0;
+  const adicionalVariabilidad = variabilidad !== "ninguna" ? ref.variabilidad[variabilidad] : 0;
+  const adicionalZona = zona ? ref.zona : 0;
+  const adicionalCasino = usaCasino ? -casinoMonto : 0;
+  
+  const aporteLey13018 = -Aportes * 0.10;
+  const aporteObra = obra === "carga" ? -Aportes * 0.085 : obra === "mascarga" ? -Aportes * 0.095 : -Aportes * 0.075;
 
+  const total = haber + suplemento + bonificacionTitulo + adicionalVariabilidad +
+                adicionalFijacion + adicionalZona + adicionalCasino + aporteLey13018 + aporteObra;
 
-      const total = haber + suplemento + bonificacionTitulo + adicionalVariabilidad +
-                    adicionalFijacion + adicionalZona + adicionalCasino + aporteLey13018 + aporteObra;
-
-      document.getElementById("resultado").innerHTML = `
-        <h3>Resultado:</h3>
-        <p><strong>Haber mensual base:</strong> $${haber.toFixed(2)}</p>
-        <p><strong>Suplemento por antigüedad (${antiguedad} años):</strong> $${suplemento.toFixed(2)}</p>
-        <p><strong>Bonificación por título:</strong> $${bonificacionTitulo.toFixed(2)}</p>
-        <p><strong>Adic. por variabilidad:</strong> $${adicionalVariabilidad.toFixed(2)}</p>
-        <p><strong>Fijación de domicilio:</strong> $${adicionalFijacion.toFixed(2)}</p>
-        <p><strong>Zona Sur:</strong> $${adicionalZona.toFixed(2)}</p>
-        <hr>
-        <p><strong>Casino :</strong> $${adicionalCasino.toFixed(2)}</p>
-        <p><strong>Aporte Ley 13.018 (10%):</strong> $${aporteLey13018.toFixed(2)}</p>
-        <p><strong>Aporte Obra Social:</strong> $${aporteObra.toFixed(2)}</p>
-        <hr>
-        <p><strong>Total estimado:</strong> $${total.toFixed(2)}</p>
-      `;
-    }
+  document.getElementById("resultado").innerHTML = `
+    <h3 style="color: #007bff; text-align: center;">Resultado del Cálculo</h3>
+    <table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 15px;">
+      <thead>
+        <tr style="background-color: #007bff; color: white;">
+          <th style="padding: 12px; border: 1px solid #ddd; text-align: left;">Concepto</th>
+          <th style="padding: 12px; border: 1px solid #ddd; text-align: right;">Importe</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd;"><strong>Haber mensual base</strong></td>
+          <td style="padding: 10px; border: 1px solid #ddd; text-align: right;">$${haber.toFixed(2)}</td>
+        </tr>
+        <tr style="background-color: #f9f9f9;">
+          <td style="padding: 10px; border: 1px solid #ddd;"><strong>Suplemento por antigüedad (${antiguedad} años)</strong></td>
+          <td style="padding: 10px; border: 1px solid #ddd; text-align: right;">$${suplemento.toFixed(2)}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd;"><strong>Bonificación por título</strong></td>
+          <td style="padding: 10px; border: 1px solid #ddd; text-align: right;">$${bonificacionTitulo.toFixed(2)}</td>
+        </tr>
+        <tr style="background-color: #f9f9f9;">
+          <td style="padding: 10px; border: 1px solid #ddd;"><strong>Adicional por variabilidad</strong></td>
+          <td style="padding: 10px; border: 1px solid #ddd; text-align: right;">$${adicionalVariabilidad.toFixed(2)}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd;"><strong>Fijación de domicilio</strong></td>
+          <td style="padding: 10px; border: 1px solid #ddd; text-align: right;">$${adicionalFijacion.toFixed(2)}</td>
+        </tr>
+        <tr style="background-color: #f9f9f9;">
+          <td style="padding: 10px; border: 1px solid #ddd;"><strong>Zona Sur</strong></td>
+          <td style="padding: 10px; border: 1px solid #ddd; text-align: right;">$${adicionalZona.toFixed(2)}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd;"><strong>Casino</strong></td>
+          <td style="padding: 10px; border: 1px solid #ddd; text-align: right;">$${adicionalCasino.toFixed(2)}</td>
+        </tr>
+        <tr style="background-color: #f9f9f9;">
+          <td style="padding: 10px; border: 1px solid #ddd;"><strong>Aporte Ley 13.018 (10%)</strong></td>
+          <td style="padding: 10px; border: 1px solid #ddd; text-align: right;">$${aporteLey13018.toFixed(2)}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd;"><strong>Aporte Obra Social</strong></td>
+          <td style="padding: 10px; border: 1px solid #ddd; text-align: right;">$${aporteObra.toFixed(2)}</td>
+        </tr>
+        <tr style="background-color: #e6f7ff; border-top: 2px solid #007bff;">
+          <td style="padding: 12px; border: 1px solid #ddd;"><strong style="font-size: 16px;">TOTAL ESTIMADO</strong></td>
+          <td style="padding: 12px; border: 1px solid #ddd; text-align: right;"><strong style="font-size: 16px; color: #007bff;">$${total.toFixed(2)}</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  `;
+}
   </script>
   <script>
   function verificarFijacion() {
@@ -646,7 +683,7 @@ function mostrarTabla() {
       <thead>
         <tr style="background:#007bff; color:white;">
           <th style="padding: 8px; border: 1px solid #ccc;">Grado</th>
-          <th style="padding: 8px; border: 1px solid #ccc;">Años</th>
+          <th style="padding: 8px; border: 1px solid #ccc;">Años (ECG)</th>
           <th style="padding: 8px; border: 1px solid #ccc;">Haber neto</th>
           <th style="padding: 8px; border: 1px solid #ccc;">Haber neto universitario</th>
         </tr>
