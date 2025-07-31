@@ -625,7 +625,6 @@ function mostrarTabla() {
       <thead>
         <tr style="background:#007bff; color:white;">
           <th style="padding: 8px; border: 1px solid #ccc;">Grado</th>
-          <th style="padding: 8px; border: 1px solid #ccc;">Jerarquia</th>
           <th style="padding: 8px; border: 1px solid #ccc;">Haber Mensual</th>
           <th style="padding: 8px; border: 1px solid #ccc;">Haber neto</th>
 
@@ -654,7 +653,6 @@ function mostrarTabla() {
     tablaHTML += `
       <tr style="background-color: ${backgroundColor};">
         <td style="padding: 8px; border: 1px solid #ccc;">${grado}</td>
-        <td style="padding: 8px; border: 1px solid #ccc;">${jerarquia}</td>
         <td style="padding: 8px; border: 1px solid #ccc;">$${datos.haber.toLocaleString("es-AR", {minimumFractionDigits: 2})}</td>
         <td style="padding: 8px; border: 1px solid #ccc;">$${datos.promedio.toLocaleString("es-AR", {minimumFractionDigits: 2})}</td>
 
