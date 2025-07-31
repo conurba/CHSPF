@@ -576,7 +576,7 @@
      
       const ref = referencia[grado];
 
-      const casinoMonto = ref.casino;;
+      const casinoMonto = ref.casino;
       const jerarquia = ref.jerarquia;
       const haber = ref.haber;
       const suplemento = haber * 0.02 * antiguedad;
@@ -649,11 +649,8 @@ function mostrarTabla() {
           <th style="padding: 8px; border: 1px solid #ccc;">Años</th>
           <th style="padding: 8px; border: 1px solid #ccc;">Haber neto</th>
           <th style="padding: 8px; border: 1px solid #ccc;">Haber neto universitario</th>
-
         </tr>
       </thead>
-
-      
       <tbody>
   `;
 
@@ -662,13 +659,13 @@ function mostrarTabla() {
     let backgroundColor = "";
     switch (datos.jerarquia) {
       case "Oficial":
-        backgroundColor = "#fff9c4"; // Amarillo claro
+        backgroundColor = "#fff9c4";
         break;
       case "Suboficial":
-        backgroundColor = "#e0e0e0"; // Gris claro
+        backgroundColor = "#e0e0e0";
         break;
       case "Aspirante":
-        backgroundColor = "#ffffff"; // Blanco
+        backgroundColor = "#ffffff";
         break;
       default:
         backgroundColor = "#ffffff";
@@ -677,10 +674,9 @@ function mostrarTabla() {
     tablaHTML += `
       <tr style="background-color: ${backgroundColor};">
         <td style="padding: 8px; border: 1px solid #ccc;">${grado}</td>
-        <td style="padding: 8px; border: 1px solid #ccc;">${años}</td>        
+        <td style="padding: 8px; border: 1px solid #ccc;">${datos.años}</td>        
         <td style="padding: 8px; border: 1px solid #ccc;">$${datos.promedio.toLocaleString("es-AR", {minimumFractionDigits: 2})}</td>
         <td style="padding: 8px; border: 1px solid #ccc;">$${datos.promuni.toLocaleString("es-AR", {minimumFractionDigits: 2})}</td>
-
       </tr>
     `;
   });
@@ -690,17 +686,12 @@ function mostrarTabla() {
     </table>
  
     <div style="margin-top: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 5px;">
-      <h4>Formulas:</h4>
+      <h4>Fórmulas:</h4>
       <ul>
-        <li><strong>Haber neto</strong> = "Haber mensual" + "Suplemento por antigüedad" (años mínimos acumulados para ascender ECG) - "Casino" - "Aporte jubilatorio" - "Aporte obra social con carga de familia (1 o 2)"</li
-        <ul><li><strong>Haber neto universitario</strong> = "Haber neto" + "Bonificación por titulo universitario"</li>
-
+        <li><strong>Haber neto</strong> = "Haber mensual" + "Suplemento por antigüedad" (años mínimos acumulados para ascender ECG) - "Casino" - "Aporte jubilatorio" - "Aporte obra social con carga de familia (1 o 2)"</li>
+        <li><strong>Haber neto universitario</strong> = "Haber neto" + "Bonificación por título universitario"</li>
       </ul>
-
     </div>
-
-
-    
   `;
 
   const tablaDiv = document.getElementById("tablaReferencias");
