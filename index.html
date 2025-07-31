@@ -549,18 +549,37 @@ function mostrarTabla() {
       <thead>
         <tr style="background:#007bff; color:white;">
           <th style="padding: 8px; border: 1px solid #ccc;">Grado</th>
+          <th style="padding: 8px; border: 1px solid #ccc;">Jerarquía</th>
           <th style="padding: 8px; border: 1px solid #ccc;">Haber Mensual</th>
+
         </tr>
       </thead>
       <tbody>
   `;
 
   lista.forEach(([grado, datos]) => {
+    // Establecer el color de fondo según la jerarquía
+    let backgroundColor = "";
+    switch (datos.jerarquia) {
+      case "Oficial":
+        backgroundColor = "#fff9c4"; // Amarillo claro
+        break;
+      case "Suboficial":
+        backgroundColor = "#e0e0e0"; // Gris claro
+        break;
+      case "Aspirante":
+        backgroundColor = "#ffffff"; // Blanco
+        break;
+      default:
+        backgroundColor = "#ffffff";
+    }
+
     tablaHTML += `
-      <tr>
+      <tr style="background-color: ${backgroundColor};">
         <td style="padding: 8px; border: 1px solid #ccc;">${grado}</td>
+        <td style="padding: 8px; border: 1px solid #ccc;">${datos.jerarquia}</td>
         <td style="padding: 8px; border: 1px solid #ccc;">$${datos.haber.toLocaleString("es-AR", {minimumFractionDigits: 2})}</td>
-        
+
       </tr>
     `;
   });
