@@ -620,26 +620,28 @@ function mostrarTabla() {
   const lista = Object.entries(referencia).sort((a, b) => b[1].promedio - a[1].promedio);
 
   let tablaHTML = `
-    <h3>Tabla de haberes (ordenados de mayor a menor)</h3>
-      <p>El haber neto estimado se calcula:</p> 
-      <p> Haber mensual base: correspondiente al grado </p>
-      <p> Suplemento por antigüedad: acumulacion segun antiguedad minima ascender</p>
-      <p> Bonificacion por titulo: No</p>
-      <p>Adic. por variabilidad: No</p>
-      <p>Fijación de domicilio: Si</p>
-      <p>Zona Sur: No</p>
-      <p>Casino : Si</p>
-      <p>Aporte Ley 13.018: -10% </p>
-      <p>Aporte Obra Social con carga de familia (1 o 2): -8.5% </p>
+    <h3>Haberes estimados (ordenados de mayor a menor)</h3>
     
     <table style="width:100%; border-collapse: collapse; font-size:14px;">
       <thead>
         <tr style="background:#007bff; color:white;">
           <th style="padding: 8px; border: 1px solid #ccc;">Grado</th>
           <th style="padding: 8px; border: 1px solid #ccc;">Haber neto</th>
+          <th style="padding: 8px; border: 1px solid #ccc;">Haber neto universitario</th>
 
         </tr>
       </thead>
+      
+      <p>El haber neto estimado se calcula:</p> 
+      <p> Haber mensual base: correspondiente al grado </p>
+      <p> Suplemento por antigüedad: acumulacion segun antiguedad minima ascender</p>
+      <p> Bonificacion por titulo: No</p>
+      <p> Adic. por variabilidad: No</p>
+      <p> Fijación de domicilio: Si</p>
+      <p> Zona Sur: No</p>
+      <p> Casino : Si</p>
+      <p> Aporte Ley 13.018: -10% </p>
+      <p> Aporte Obra Social con carga de familia (1 o 2): -8.5% </p>
       <tbody>
   `;
 
@@ -664,6 +666,7 @@ function mostrarTabla() {
       <tr style="background-color: ${backgroundColor};">
         <td style="padding: 8px; border: 1px solid #ccc;">${grado}</td>
         <td style="padding: 8px; border: 1px solid #ccc;">$${datos.promedio.toLocaleString("es-AR", {minimumFractionDigits: 2})}</td>
+        <td style="padding: 8px; border: 1px solid #ccc;">$${datos.promuni.toLocaleString("es-AR", {minimumFractionDigits: 2})}</td>
 
       </tr>
     `;
